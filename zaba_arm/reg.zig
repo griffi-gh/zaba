@@ -25,6 +25,7 @@ pub const Registers = struct {
         if ((self.mode == .fiq) != (mode == .fiq)) {
             std.mem.swap(self.gpr[8..13], self.self.gpr_r8_r12_storage[0..]);
         }
+        std.mem.swap(self.gpr[13..15], self.self.gpr_r13_14_storage[0][0..]);
         std.mem.swap(self.gpr[13..15], self.self.gpr_r13_14_storage[mode_id(mode)][0..]);
         self.mode = mode;
     }
