@@ -1,16 +1,16 @@
 const std = @import("std");
 
-pub fn build(b: *std.build.Builder) void {
+pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
     const zaba_arm = b.addModule("zaba_arm", .{
-        .source_file = .{ .path = "zaba_arm/lib.zig" },
+        .root_source_file = .{ .path = "zaba_arm/lib.zig" },
     });
 
     const zaba_core = b.addModule("zaba_core", .{
-        .source_file = .{ .path = "zaba_core/lib.zig" },
-        .dependencies = &.{
+        .root_source_file = .{ .path = "zaba_core/lib.zig" },
+        .imports = &.{
             .{ .name = "zaba_arm", .module = zaba_arm },
         },
     });
