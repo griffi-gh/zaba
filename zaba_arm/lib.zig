@@ -5,3 +5,7 @@ pub const cond = @import("cond.zig");
 pub fn testing() void {
     std.log.info("Hello from zaba_arm", .{});
 }
+
+test {
+    std.testing.refAllDecls(@This());
+}

@@ -36,9 +36,7 @@ pub const Registers = struct {
 };
 
 test "testing_should_fail" {
-    std.log.err("owo");
-    //TEST should fail
-    var registers = Registers{};
+    var registers = std.mem.zeroes(Registers);
     registers.gpr[0] = 0xdeadbeef;
-    std.debug.assert(registers.gpr[0] == 0xfeedbeef);
+    try std.testing.expectEqual(registers.gpr[0], 0xdeadbeef);
 }
