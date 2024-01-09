@@ -21,8 +21,8 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    exe.addModule("zaba_arm", zaba_arm);
-    exe.addModule("zaba_core", zaba_core);
+    exe.root_module.addImport("zaba_arm", zaba_arm);
+    exe.root_module.addImport("zaba_core", zaba_core);
 
     b.installArtifact(exe);
 
