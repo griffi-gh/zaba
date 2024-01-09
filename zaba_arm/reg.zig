@@ -35,4 +35,10 @@ pub const Registers = struct {
     }
 };
 
-test {}
+test "testing_should_fail" {
+    std.log.err("owo");
+    //TEST should fail
+    var registers = Registers{};
+    registers.gpr[0] = 0xdeadbeef;
+    std.debug.assert(registers.gpr[0] == 0xfeedbeef);
+}
